@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تهنئة النجاح الذكية - متوسطة بوضريسة محمد الأمين</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Tahoma', 'Cairo', sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #eef2f5 0%, #d9e2ec 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            color: #1e3c72;
+            font-size: 1.9rem;
+            margin-bottom: 8px;
+        }
+        .header h2 {
+            color: #ff6d00;
+            font-size: 1.4rem;
+        }
+        .badge-school {
+            background: #ff9800;
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .search-area {
+            background: #fef7e0;
+            border-radius: 40px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+        .input-group input {
+            flex: 3;
+            min-width: 200px;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: none;
+            background: white;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid #ffe0a3;
+            text-align: right;
+        }
+        .input-group button {
+            background: #ff9800;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .input-group button:hover {
+            background: #f57c00;
+            transform: scale(1.02);
+        }
+        .result-card {
+            background: white;
+            border-radius: 40px;
+            padding: 25px;
+            margin-top: 20px;
+            border-right: 12px solid #ff9800;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+        }
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .label {
+            font-weight: bold;
+            color: #2c3e66;
+        }
+        .value {
+            color: #1f3a4b;
+            font-weight: 500;
+        }
+        .congrats {
+            background: #e0f2e9;
+            padding: 18px;
+            border-radius: 32px;
+            margin-top: 25px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2e6b3e;
+            border-right: 6px solid #2e7d32;
+        }
+        .note-success {
+            background: #e3f2fd;
+            border-radius: 28px;
+            padding: 12px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .suggestions {
+            background: #fff3e0;
+            border-radius: 30px;
+            padding: 8px 15px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #a05c00;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4a627a;
+            margin-top: 20px;
+        }
+        @media (max-width: 650px) {
+            .card { padding: 20px; }
+            .header h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="header">
+            <h1>🎓 تهنئة النجاح الذكية 🎉</h1>
+            <h2>متوسطة الشهيد <strong>بوضريسة محمد الأمين</strong></h2>
+            <div class="badge-school">المسيلة - دورة 2026</div>
+        </div>
+
+        <div class="search-area">
+            <div class="input-group">
+                <input type="text" id="searchInput" list="studentNames" placeholder="🔍 اكتب الاسم أو اللقب أو رقم التسجيل... (مثال: آدم دفاف)" autocomplete="off">
+                <datalist id="studentNames"></datalist>
+                <button id="searchBtn">🔎 ابحث وتهنئة</button>
+            </div>
+            <div class="suggestions">
+                ✨ بحث ذكي: يتجاهل التشكيل، ويقبل الأخطاء البسيطة، ويطابق أي جزء من الاسم أو اللقب
+            </div>
+        </div>
+
+        <div id="resultArea">
+            <div style="text-align: center; color: #5d6e85; padding: 20px;">
+                🔍 انتظر إدخال اسمك أو رقم تسجيلك لترى نتيجتك وتهنئتك
+            </div>
+        </div>
+    </div>
+    <footer>
+        💡 يعتمد التطبيق على قوائم الناجحين بالشهادة والمقبولين بمعدل التقويم المستمر
+    </footer>
+</div>
+
+<script>
+    // -------------------- البيانات كما هي مأخوذة من الملف --------------------
+    const certificateData = [
+        [1,25445504,"دفاف","آدم","2011-06-29",10.46,"مقبول"],
+        [2,25445516,"لعمارة","آية","2010-10-18",12.39,"قريب من الجيد"],
+        [3,25445520,"بن شعبان","آية الرحمان","2011-12-24",11.35,"مقبول"],
+        [4,25445601,"هلتالي","أبرار","2011-10-12",12.05,"قريب من الجيد"],
+        [5,25445702,"شرفاوي","أمال","2010-02-23",10.33,"مقبول"],
+        [6,25445705,"طبي","أماني نور اليقين","2011-12-14",14.07,"جيد"],
+        [7,25445805,"غالم","أمينة","2011-03-02",13.78,"قريب من الجيد"],
+        [8,25445806,"قرباص","أمينة","2011-04-30",10.81,"مقبول"],
+        [9,25445807,"بوضريسة","أمينة","2011-10-30",15.49,"جيد"],
+        [10,25445817,"بلعباسي","أية","2011-03-07",12.47,"قريب من الجيد"],
+        [11,25445820,"غانم","أيمن","2010-10-21",10.19,"مقبول"],
+        [12,25445908,"باي راقد","إسراء","2011-04-27",14.24,"جيد"],
+        [13,25445909,"بوضريسة","إسراء","2011-07-15",13.04,"قريب من الجيد"],
+        [14,25445915,"زرايبي","إكرام","2010-09-13",11.47,"مقبول"],
+        [15,25445920,"بن علي","إيمان","2010-07-20",12.10,"قريب من الجيد"],
+        [16,25446004,"سالمي","إيناس","2011-09-03",11.24,"مقبول"],
+        [17,25446220,"علجي","الكاملة","2011-10-09",10.94,"مقبول"],
+        [18,25446301,"علجي","المعتصم بالله","2012-02-29",10.70,"مقبول"],
+        [19,25446311,"دفاف","اميمة","2011-07-10",10.55,"مقبول"],
+        [20,25446416,"قلقول","باديس","2011-07-02",10.24,"مقبول"],
+        [21,25446503,"دبي","بسملة","2011-07-12",11.89,"مقبول"],
+        [22,25446504,"شنان","بشرى","2010-07-25",11.74,"مقبول"],
+        [23,25446514,"بوضريسة","تقوى","2011-10-17",12.05,"قريب من الجيد"],
+        [24,25446515,"قرباص","تقوى","2011-10-21",18.01,"ممتاز"],
+        [25,25446518,"دومة","تميم","2011-08-01",11.69,"مقبول"],
+        [26,25446603,"قلقول","جمانة","2011-12-24",10.65,"مقبول"],
+        [27,25446613,"غالم","حمزة","2011-08-13",12.13,"قريب من الجيد"],
+        [28,25446614,"بوقرة","حمود","2011-11-08",12.18,"قريب من الجيد"],
+        [29,25446616,"مواسي","حنان","2011-03-28",12.17,"قريب من الجيد"],
+        [30,25446704,"بلعباسي","خديجة","2010-06-22",12.33,"قريب من الجيد"],
+        [31,25446706,"زغاد","خديجة","2011-08-11",11.00,"مقبول"],
+        [32,25446714,"خميسة","خليل الرحمان","2010-06-18",10.86,"مقبول"],
+        [33,25446715,"سيلم","خولة","2010-12-27",10.64,"مقبول"],
+        [34,25446807,"دفاف","رؤية","2011-01-15",13.66,"قريب من الجيد"],
+        [35,25446811,"زغاد","رابح","2011-02-07",10.00,"مقبول"],
+        [36,25446812,"زغاد","رابح معتصم بالله","2010-02-23",10.47,"مقبول"],
+        [37,25446813,"سيلم","راضية","2011-12-22",11.84,"مقبول"],
+        [38,25446817,"دبي","رحمة","2010-10-12",11.15,"مقبول"],
+        [39,25447002,"خميسة","ريتاج","2010-08-19",11.04,"مقبول"],
+        [40,25447007,"سيلم","ريتاج","2011-08-30",13.50,"قريب من الجيد"],
+        [41,25447011,"خميسة","ريتاج أروى","2011-05-07",11.08,"مقبول"],
+        [42,25447015,"سهلي","ريمة","2010-09-04",13.62,"قريب من الجيد"],
+        [43,25447019,"دفاف","ريهام","2011-10-17",11.82,"مقبول"],
+        [44,25447201,"سهلي","سجود","2011-12-29",10.78,"مقبول"],
+        [45,25447202,"سهلي","سراج","2011-07-07",10.28,"مقبول"],
+        [46,25447205,"سيلم","سلسبيل","2010-12-29",10.05,"مقبول"],
+        [47,25447207,"دفاف","سلسبيل","2011-07-21",11.43,"مقبول"],
+        [48,25447209,"شنان","سلسبيل","2011-08-12",14.00,"جيد"],
+        [49,25447218,"زغاد","سندس","2008-12-02",11.68,"مقبول"],
+        [50,25447302,"سيلم","سيرين","2008-07-19",10.81,"مقبول"],
+        [51,25447310,"علجي","شلبية","2011-09-30",10.07,"مقبول"],
+        [52,25447319,"بوقرة","شيماء","2012-01-01",16.30,"جيد جدا"],
+        [53,25447409,"بلعباسي","صهيب","2011-11-19",10.80,"مقبول"],
+        [54,25447411,"بوضريسة","ضحى","2011-01-08",11.27,"مقبول"],
+        [55,25447416,"عبد الرحيم","عائشة","2011-03-10",10.20,"مقبول"],
+        [56,25447420,"شنان","عبد الجليل","2011-09-24",12.26,"قريب من الجيد"],
+        [57,25447508,"بوقرة","عبد الرؤووف","2011-05-28",12.44,"قريب من الجيد"],
+        [58,25447520,"قلقول","عبد الفتاح محمد","2011-09-05",12.64,"قريب من الجيد"],
+        [59,25447605,"دفاف","عبد الله","2009-12-18",10.57,"مقبول"],
+        [60,25447612,"بن كيحول","عبد المنعم","2011-07-27",15.36,"جيد"],
+        [61,25447613,"سعادة","عبد النور","2009-02-13",10.46,"مقبول"],
+        [62,25447616,"دبي","عبد الهادي","2011-10-05",10.38,"مقبول"],
+        [63,25447702,"سعادة","عبير","2011-02-19",10.37,"مقبول"],
+        [64,25447802,"زريق","عمر عبد الصمد","2011-10-19",10.99,"مقبول"],
+        [65,25447903,"خميسة","فرح هدى","2011-03-29",10.46,"مقبول"],
+        [66,25447910,"غانم","قصي","2011-08-26",11.01,"مقبول"],
+        [67,25447914,"شنان","كمال الدين","2011-08-25",10.33,"مقبول"],
+        [68,25447915,"بوطبيق","كميليا","2011-07-04",12.46,"قريب من الجيد"],
+        [69,25447916,"دفاف","كنزة","2009-09-25",10.18,"مقبول"],
+        [70,25447918,"بن الضيف","كوثر","2010-08-29",10.14,"مقبول"],
+        [71,25447919,"زغاد","كوثر","2011-05-28",10.03,"مقبول"],
+        [72,25448004,"بن التومي","لميس","2011-01-17",10.97,"مقبول"],
+        [73,25448006,"بن التومي","لميس","2011-05-27",10.01,"مقبول"],
+        [74,25448012,"سيلم","لينة","2010-03-07",10.55,"مقبول"],
+        [75,25448016,"بلقرع","لينة","2011-12-02",12.66,"قريب من الجيد"],
+        [76,25448101,"سيلم","مارية","2011-02-01",14.12,"جيد"],
+        [77,25448114,"زغاد","محمد","2011-03-15",10.21,"مقبول"],
+        [78,25448115,"سالمي","محمد","2011-04-05",11.67,"مقبول"],
+        [79,25448316,"قرباص","مريم","2009-08-24",10.05,"مقبول"],
+        [80,25448318,"دبي","مريم","2010-08-26",11.77,"مقبول"],
+        [81,25448408,"بوضريسة","مريم البتول","2011-12-18",16.01,"جيد جدا"],
+        [82,25448410,"عباد","مسعودة","2009-03-31",10.00,"مقبول"],
+        [83,25448506,"بن التومي","ملاك","2009-06-28",10.89,"مقبول"],
+        [84,25448507,"سيلم","ملاك","2009-09-19",10.99,"مقبول"],
+        [85,25448613,"دفاف","مونية","2010-08-28",10.45,"مقبول"],
+        [86,25448701,"بن التومي","نجم الدين","2011-02-20",11.86,"مقبول"],
+        [87,25448816,"عبد الرحيم","هبة الرحمن","2010-02-06",10.55,"مقبول"],
+        [88,25448901,"سعادة","هديل","2010-08-08",12.91,"قريب من الجيد"],
+        [89,25448905,"هلتالي","هديل","2011-06-02",13.84,"قريب من الجيد"],
+        [90,25448908,"لعلجي","هناء","2011-03-19",13.45,"قريب من الجيد"],
+        [91,25448912,"مواسي","هيثم","2010-12-15",11.61,"مقبول"],
+        [92,25449004,"بن التومي","ياسر","2010-08-23",10.53,"مقبول"],
+        [93,25449007,"زغاد","ياسر","2011-07-16",14.07,"جيد"],
+        [94,25449010,"سيلم","ياسمين","2009-01-23",11.39,"مقبول"],
+        [95,25449013,"بوضريسة","ياسمين","2011-08-20",15.99,"جيد"],
+        [96,25449104,"خميسة","يسرى","2010-07-14",10.04,"مقبول"],
+        [97,25449114,"خميسة","يوسف","2011-02-14",12.78,"قريب من الجيد"],
+        [98,25449209,"بن علي","يونس","2011-05-23",13.91,"قريب من الجيد"]
+    ];
+
+    const evalData = [
+        [1,25445501,"بلعجوز","آدم","2009-10-18",8.48,11.65,10.07],
+        [2,25445509,"خميسة","آلاء","2011-12-03",9.68,10.99,10.34],
+        [3,25445617,"بن التومي","أشواق","2010-08-31",9.20,11.12,10.16],
+        [4,25445711,"دومة","أميرة","2011-10-12",9.76,12.15,10.96],
+        [5,25445818,"سهلي","أية","2011-12-04",9.76,12.01,10.89],
+        [6,25445913,"بن علي","إسمهان","2010-06-30",9.60,10.60,10.10],
+        [7,25446105,"غالم","اسحاق","2010-12-03",9.72,14.09,11.91],
+        [8,25446208,"قلقول","الاء نرجس","2010-07-23",9.05,11.02,10.04],
+        [9,25446217,"بوقرة","الطيب","2009-08-02",8.76,11.91,10.34],
+        [10,25446315,"دفاف","انس","2011-04-26",9.31,10.90,10.11],
+        [11,25446720,"بلعايبة","دعاء","2011-03-26",9.97,12.39,11.18],
+        [12,25446902,"بن قسمية","رشا فرح","2009-11-11",9.68,10.81,10.25],
+        [13,25446920,"قلقول","ريان","2011-09-07",9.54,11.09,10.32],
+        [14,25447006,"بوضريسة","ريتاج","2011-07-12",9.47,11.15,10.31],
+        [15,25447417,"دفاف","عائشة","2011-05-18",9.35,11.66,10.50],
+        [16,25447620,"دفاف","عبلة","2010-07-23",9.18,11.37,10.27],
+        [17,25448011,"خميسة","لينة","2010-01-09",9.91,11.72,10.82],
+        [18,25448108,"سي محمد","محمد","2009-04-25",9.11,11.57,10.34],
+        [19,25448317,"قلقول","مريم","2010-06-17",9.66,10.53,10.09],
+        [20,25448411,"حريزي","مصطفى","2010-06-23",9.50,10.90,10.20],
+        [21,25448520,"سيلم","منال","2009-07-28",9.70,11.96,10.83],
+        [22,25448614,"خميسة","ميساء رشا","2010-07-18",9.16,11.06,10.11],
+        [23,25448716,"بلقرع","نور","2011-06-18",9.78,12.34,11.06],
+        [24,25448914,"علجي","وئام","2010-05-29",9.20,10.89,10.05],
+        [25,25448917,"بن التومي","وردة","2010-02-13",9.83,11.20,10.52],
+        [26,25449105,"مرزوقي","يسرى","2011-10-20",9.33,11.02,10.18]
+    ];
+
+    let students = [];
+
+    // بناء الطلاب
+    certificateData.forEach((std, idx) => {
+        students.push({
+            id: idx,
+            regNum: std[1],
+            lastName: std[2],
+            firstName: std[3],
+            fullName: `${std[2]} ${std[3]}`,
+            birth: std[4],
+            score: std[5],
+            note: std[6],
+            type: "certificate",
+        });
+    });
+    evalData.forEach((std, idx) => {
+        const acceptanceScore = std[7];
+        let noteText = "";
+        if (acceptanceScore >= 10 && acceptanceScore < 12) noteText = "مقبول بالتقويم";
+        else if (acceptanceScore >= 12 && acceptanceScore < 14) noteText = "جيد بالتقويم";
+        else if (acceptanceScore >= 14) noteText = "ممتاز بالتقويم";
+        else noteText = "ناجح بمعدل التقويم";
+        students.push({
+            id: 1000 + idx,
+            regNum: std[1],
+            lastName: std[2],
+            firstName: std[3],
+            fullName: `${std[2]} ${std[3]}`,
+            birth: std[4],
+            score: acceptanceScore,
+            note: noteText,
+            type: "eval",
+            certExam: std[5],
+            annualAvg: std[6]
+        });
+    });
+
+    // ========== دوال البحث الذكي ==========
+    // إزالة التشكيل والهمزات والألف المقصورة وغيرها
+    function normalizeText(str) {
+        return str.normalize("NFD").replace(/[\u064B-\u065F\u0670]/g, "").replace(/[آأإٱ]/g, "ا").replace(/[ة]/g, "ه").replace(/[ى]/g, "ي").toLowerCase();
+    }
+
+    // حساب مسافة ليفنشتاين للتشابه (بسيطة)
+    function levenshteinDistance(a, b) {
+        const matrix = [];
+        for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+        for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+        for (let i = 1; i <= b.length; i++) {
+            for (let j = 1; j <= a.length; j++) {
+                const cost = a[j-1] === b[i-1] ? 0 : 1;
+                matrix[i][j] = Math.min(
+                    matrix[i-1][j] + 1,
+                    matrix[i][j-1] + 1,
+                    matrix[i-1][j-1] + cost
+                );
+            }
+        }
+        return matrix[b.length][a.length];
+    }
+
+    // درجة التشابه (كلما زادت كان أفضل)
+    function similarityScore(normQuery, normText) {
+        if (normText.includes(normQuery)) return 100;
+        const wordsQuery = normQuery.split(/\s+/);
+        const wordsText = normText.split(/\s+/);
+        let matchCount = 0;
+        for (let wq of wordsQuery) {
+            for (let wt of wordsText) {
+                if (wt.includes(wq) || wq.includes(wt) || levenshteinDistance(wq, wt) <= 2) {
+                    matchCount++;
+                    break;
+                }
+            }
+        }
+        const ratio = matchCount / wordsQuery.length;
+        if (ratio >= 0.7) return 80 + ratio*10;
+        // levenshtein على النص الكامل
+        const maxLen = Math.max(normQuery.length, normText.length);
+        const dist = levenshteinDistance(normQuery, normText);
+        const sim = (1 - dist / maxLen) * 100;
+        return sim;
+    }
+
+    // البحث الذكي: يعيد أفضل طالب أو null
+    function smartSearch(query) {
+        if (!query.trim()) return null;
+        let normQuery = normalizeText(query.trim());
+        // أولاً: بحث دقيق برقم التسجيل
+        if (/^\d+$/.test(normQuery)) {
+            const reg = parseInt(normQuery);
+            const exact = students.find(s => s.regNum === reg);
+            if (exact) return exact;
+        }
+        let bestMatch = null;
+        let bestScore = -1;
+        for (let student of students) {
+            const normFull = normalizeText(student.fullName);
+            const normLast = normalizeText(student.lastName);
+            const normFirst = normalizeText(student.firstName);
+            let score = Math.max(
+                similarityScore(normQuery, normFull),
+                similarityScore(normQuery, normLast),
+                similarityScore(normQuery, normFirst)
+            );
+            // Bonus if query matches full name exactly (normalized)
+            if (normFull === normQuery) score = 100;
+            else if (normFull.includes(normQuery) || normQuery.includes(normFull)) score = Math.max(score, 95);
+            if (score > bestScore) {
+                bestScore = score;
+                bestMatch = student;
+            }
+        }
+        // عتبة القبول 40%
+        if (bestScore >= 40) return bestMatch;
+        return null;
+    }
+
+    // عرض النتيجة والتهنئة
+    function displayResult(student, queryUsed = "") {
+        const resultDiv = document.getElementById("resultArea");
+        if (!student) {
+            resultDiv.innerHTML = `
+                <div class="result-card" style="background:#ffe6e6; border-right-color:#d32f2f;">
+                    <div style="color:#b71c1c; text-align:center; font-size:1.2rem;">
+                        ❌ لم يتم العثور على طالب مطابق للبحث: "${queryUsed}"<br>
+                        تأكد من الاسم أو رقم التسجيل (دورة 2026)
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        const typeText = (student.type === "certificate") ? "🎓 ناجح بالشهادة" : "📚 ناجح بمعدل التقويم المستمر";
+        const badgeColor = (student.type === "certificate") ? "#1e88e5" : "#2e7d32";
+        let extraInfo = "";
+        if (student.type === "eval") {
+            extraInfo = `<div class="info-row"><span class="label">📘 معدل الشهادة:</span><span class="value">${student.certExam?.toFixed(2) ?? "—"}</span></div>
+                         <div class="info-row"><span class="label">📈 المعدل السنوي:</span><span class="value">${student.annualAvg?.toFixed(2) ?? "—"}</span></div>`;
+        }
+        const congratsMsg = (student.type === "certificate") 
+            ? `🎉 مبارك النجاح في شهادة التعليم المتوسط 🎉<br> أنتَ/أنتِ من المتفوقين، فخر للمتوسطة.`
+            : `🌟 تهانينا! نجحت بمعدل التقويم المستمر، وسيتم قبولك في السنة الأولى ثانوي 🌟<br> جهدك المتميز أتى ثماره.`;
+
+        resultDiv.innerHTML = `
+            <div class="result-card">
+                <div class="info-row">
+                    <span class="label">📌 رقم التسجيل:</span>
+                    <span class="value">${student.regNum}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">👤 الاسم الكامل:</span>
+                    <span class="value">${student.fullName}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">📅 تاريخ الميلاد:</span>
+                    <span class="value">${student.birth}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">⭐ المعدل / درجة القبول:</span>
+                    <span class="value"><strong style="color:${badgeColor}">${student.score.toFixed(2)}</strong></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">📝 الملاحظة:</span>
+                    <span class="value">${student.note}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">🏆 نوع النجاح:</span>
+                    <span class="value" style="background:${badgeColor}20; padding:4px 12px; border-radius:30px;">${typeText}</span>
+                </div>
+                ${extraInfo}
+                <div class="congrats">
+                    ${congratsMsg}
+                </div>
+                <div class="note-success">
+                    ✅ متوسطة الشهيد بوضريسة محمد الأمين تفتخر بنجاحك.
+                </div>
+            </div>
+        `;
+    }
+
+    // ملء datalist بالاقتراحات (جميع الأسماء الكاملة)
+    function fillDatalist() {
+        const datalist = document.getElementById("studentNames");
+        datalist.innerHTML = "";
+        const namesSet = new Set();
+        students.forEach(s => {
+            if (!namesSet.has(s.fullName)) {
+                namesSet.add(s.fullName);
+                const option = document.createElement("option");
+                option.value = s.fullName;
+                datalist.appendChild(option);
+            }
+        });
+    }
+
+    // حدث البحث
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    function performSearch() {
+        const query = searchInput.value;
+        const best = smartSearch(query);
+        displayResult(best, query);
+    }
+
+    searchBtn.addEventListener("click", performSearch);
+    searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") performSearch();
+    });
+
+    fillDatalist();
+    console.log(`تم تحميل ${students.length} طالب (${certificateData.length} بالشهادة + ${evalData.length} بالتقويم)`);
+</script>
+</body>
+</html>
